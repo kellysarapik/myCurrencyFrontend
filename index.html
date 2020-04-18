@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Currency converter</title>
+    <link rel="stylesheet" href="assets/popup.css">
+    <link rel="stylesheet" href="assets/app.css">
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <main>
+            <h1>Currency exchange app</h1> 
+            <br>
+            <table id=mainTable>
+                <thead>
+                <caption><h2>List of currencies</h2></caption>
+                <caption><h3>1 EUR equals:</h3></caption>
+               </thead> 
+               <tbody>
+                   
+                    <tr id = "currenciesList"></tr>
+                    <tr id = "ratesList"></tr>
+                    <tr id = "amend"></tr>
+                    <tr id = "converter"></tr>
+                </tbody>
+            </table>
+            <button class="addButton" onclick="currencyAddingPopup()">Add new currency</button>      
+        </main>
+    </div>
+
+   <template id="editDeleteTemplate">
+        <div class="editDeletePopupContainer">
+            <h2>Edit or delete this currency</h2>
+            <div id="errorBox" style="display: none;">
+            </div>
+            <label for="newName">New name of the currency:</label>
+            <input type="text" name = "editName" id="editName" oninput="this.value = this.value.toUpperCase()">
+            <br>
+            <label for="newRate">New rate to EUR:</label>
+            <input type="double" name = "editRate" id="editRate">
+            <br>
+            <button onclick = "doEditCurrency(currencyId)">Change</button>
+            <br>
+            <button class="button-red" onclick="doDeleteCurrency(currencyId)">Delete this currency</button>
+        </div>
+    </template> 
+
+    <template id="convertCurrencyTemplate">
+        <div class="displayCurrenciesPopupContainer">
+            <h2>Convert currencies</h2> 
+                <p>
+                    <label for="amount">Amount in EUR:</label>
+                    <input type="double" id="amount" value="">
+                    <div id = "convert"></div>
+                    <input type="double" id="thisCurrency" value="">
+                    <input type="double" id="result" value="">
+                </p>
+        </div>
+    </template>
+
+    
+
+    <template id="currencyAddTemplate">
+        <div class="currencyPopupContainer">
+            <h1>Add new currency</h1>
+            <div id="errorBox" style="display: none;">
+            </div>
+            <label for="currencyAddName">Name of the currency:</label>
+            <input type="text" id="addName" oninput="this.value = this.value.toUpperCase()">
+            <br>
+            <label for="currencyAddRate">Currency rate to EUR:</label>
+            <input type="double" id="addRate">
+            <br>
+            <button onclick="addNewCurrency()">Save</button>
+        </div>
+    </template>
+
+
+
+    <script src="assets/config.js"></script>
+    <script src="assets/fetchApi.js"></script>
+    <script src="assets/popup.js"></script>
+    <script src="assets/app.js"></script>
+</body>
+
+</html>
